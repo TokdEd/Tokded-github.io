@@ -1,6 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>illry_website:)</title>
+    <style>
+        /* 视频容器样式 */
+        #video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        /* 视频样式 */
+        #video-background {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 网页内容样式 */
+        #page-content {
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        /* 网页内容渐显动画 */
+        .fade-in {
+            opacity: 1 !important;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var video = document.getElementById('video-background');
+            var pageContent = document.getElementById('page-content');
+
+            // 在视频播放结束后显示网页内容
+            video.addEventListener('ended', function() {
+                pageContent.classList.add('fade-in');
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- 视频容器 -->
+    <div id="video-container">
+        <!-- 视频元素 -->
+        <video id="video-background" autoplay muted>
+            <source src="C:\Users\user\Downloads\net.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- 网页内容 -->
+    <div id="page-content">
+        <!DOCTYPE html>
+<html>
+<head>
     <title>My Card</title>
 </head>
 <body>
@@ -33,7 +90,6 @@
             font-size: 20px;
             cursor: pointer;
             transition: 0.4s all ease;
-            
             margin-right: 20px;
         }
 
@@ -64,8 +120,8 @@
         }
 
         .card {
-            width: 190px;
-            height: 254px;
+            width: 285px; /* 原来宽度的1.5倍 */
+            height: 381px; /* 原来高度的1.5倍 */
             background-color: #07182e;
             position: relative;
             display: flex;
@@ -73,6 +129,7 @@
             place-items: center;
             overflow: hidden;
             border-radius: 20px;
+            transform: scale(1.5); /* 将元素放大为原来的1.5倍 */
         }
 
         .center {
@@ -139,4 +196,7 @@
         window.addEventListener('load', onPageLoad);
     </script>
 </body>
-</ html>
+</html>
+    </div>
+</body>
+</html>
