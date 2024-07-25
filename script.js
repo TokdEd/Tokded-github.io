@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 10);
 
         document.getElementById("yesButton").addEventListener("click", () => handleButtonClick('i havent made any progress yet ¯\_(ツ)_/¯'));
-        document.getElementById("noButton").addEventListener("click", () => handleButtonClick('nc to meet u ;) hane a good day '));
+        document.getElementById("noButton").addEventListener("click", () => handleButtonClick('nc to meet u ;) have a good day '));
     }
 
     function handleButtonClick(content) {
