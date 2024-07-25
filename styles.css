@@ -1,0 +1,73 @@
+.container {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+    color: #00FF00;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    padding: 20px;
+    white-space: pre;
+    width: 100%;
+    box-sizing: border-box;
+}
+.hidden {
+    display: none;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #202020;
+    color: #00FF00;
+    border: none;
+    border-radius: 5px;
+}
+body,html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #000;
+    font-family: 'Courier New', Courier, monospace; /* 等寬字體 */
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    overflow: hidden;
+}
+button:hover {
+    background-color: #00E600; /* 懸停時的背景顏色 */
+    color: #FFF; /* 懸停時的文字顏色 */
+    transform: scale(1.1);
+}
+
+/* 按鈕點擊效果 */
+button:active {
+    background-color: #00CC00; /* 點擊時的背景顏色 */
+    color: #FFF; /* 點擊時的文字顏色 */
+    transform: scale(1.05);
+}
+#typing {
+    max-width: 100%; /* 設置最大寬度為 100% */
+    overflow-wrap: break-word; /* 自動換行以避免文字溢出 */
+    text-align: center; 
+}
+/*淡入動畫*/
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#buttons {
+    opacity: 0; /* 初始狀態為完全透明 */
+    transition: opacity 1s ease-in-out; /* 設置過渡效果 */
+    display: flex; /* 顯示按鈕區域 */
+}
