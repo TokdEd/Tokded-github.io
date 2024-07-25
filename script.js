@@ -14,14 +14,30 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function showButtons() {
-        const buttons =document.getElementById("buttons");
+        const buttons = document.getElementById("buttons");
         buttons.classList.remove("hidden");
         buttons.style.display = "flex"; // 顯示按鈕區域
         setTimeout(() => {
             buttons.style.transition = "opacity 1s ease-in-out"; // 設置過渡效果
             buttons.style.opacity = 1; // 淡入
         }, 10); // 確保在顯示後開始淡入
+
+        document.getElementById("yesButton").onclick = function() {
+            loadContent('yesContent');
+        };
+        document.getElementById("noButton").onclick = function() {
+            loadContent('noContent');
+        };
+    }
+
+    function loadContent(contentId) {
+        const container = document.querySelector('.container');
+        container.innerHTML = ''; // 清空容器內容
+        const content = document.createElement('div');
+        content.innerHTML = document.getElementById(contentId).innerHTML;
+        container.appendChild(content);
     }
 
     typeWriter();
 });
+

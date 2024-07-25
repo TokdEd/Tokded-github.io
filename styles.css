@@ -71,3 +71,11 @@ button:active {
     transition: opacity 1s ease-in-out; /* 設置過渡效果 */
     display: flex; /* 顯示按鈕區域 */
 }
+#yescontent{
+    display: none;
+
+}
+#nocontent{
+    display: none;
+
+}
