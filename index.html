@@ -8,13 +8,21 @@
 </head>
 <body>
     <div class="container">
-        <div id="typing"></div>
+        <div id="question" class="hidden">
+            <div id="questionText" class="fade-in"></div>
+            <input type="text" id="nameInput" placeholder="Enter your name" />
+            <button id="submitName">Submit</button>
+        </div>
+        <div id="typing" class="hidden"></div>
         <div id="buttons" class="hidden">
-            <button id="yesButton">Yes</button>
-            <button id="noButton">No</button>
+            <button id="englishButton">English</button>
+            <button id="chineseButton">Chinese</button>
+        </div>
+        <div id="score" class="hidden">
+            <div id="timer">0</div>
+            <div id="scoreText"></div>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
-
