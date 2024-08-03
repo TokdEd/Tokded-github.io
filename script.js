@@ -1,22 +1,24 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const initialText = "English or Chinese? ";
-    const englishText = "Whoever moves first is gay.";
-    const chineseText = "誰先動誰是gay。";
+    const initialText = "English or Chinese?";
+    const interestTextEnglish = "Are you interested in our products?";
+    const interestTextChinese = "你是否對我們的商品感興趣呢?";
+    const noInterestText = "Have a good day! :)";
+
     const typingElement = document.getElementById("typing");
-    const scoreElement = document.getElementById("score");
-    const timerElement = document.getElementById("timer");
-    const scoreTextElement = document.getElementById("scoreText");
+    const interestElement = document.getElementById("interest");
+    const mainPageElement = document.getElementById("mainPage");
+    const interestTextElement = document.getElementById("interestText");
     const questionTextElement = document.getElementById("questionText");
     const nameInput = document.getElementById("nameInput");
     const submitNameButton = document.getElementById("submitName");
     const englishButton = document.getElementById("englishButton");
     const chineseButton = document.getElementById("chineseButton");
+    const yesButton = document.getElementById("yesButton");
+    const noButton = document.getElementById("noButton");
 
     let index = 0;
-    let sensitivity = 15;
-    let timer;
-    let startTime;
     let username = '';
+    let selectedLanguage = '';
 
     function typeWriter(element, text, callback) {
         index = 0; // Reset index
@@ -33,49 +35,25 @@ document.addEventListener("DOMContentLoaded", function() {
         typing();
     }
 
-    function showButtons() {
-        const buttons = document.getElementById("buttons");
-        buttons.classList.remove("hidden");
-        buttons.style.display = "flex";
-        setTimeout(() => {
-            buttons.style.transition = "opacity 1s ease-in-out";
-            buttons.style.opacity = 1;
-        }, 10);
-
-        englishButton.addEventListener("click", () => handleButtonClick(englishText));
-        chineseButton.addEventListener("click", () => handleButtonClick(chineseText));
+    function showInterestQuestion() {
+        typingElement.classList.add("hidden");
+        interestElement.classList.remove("hidden");
+        typeWriter(interestTextElement, selectedLanguage === 'english' ? interestTextEnglish : interestTextChinese, () => {
+            yesButton.addEventListener("click", () => handleInterestResponse(true));
+            noButton.addEventListener("click", () => handleInterestResponse(false));
+        });
     }
 
-    function handleButtonClick(content) {
-        const buttons = document.getElementById("buttons");
-        buttons.style.display = "none";
-        typingElement.classList.remove("hidden");
-        typeWriter(typingElement, content, startTimer);
-    }
-
-    function startTimer() {
-        scoreElement.classList.remove("hidden");
-        timerElement.innerText = '0';
-        startTime = Date.now();
-
-        window.addEventListener('devicemotion', handleMotion, false);
-
-        function handleMotion(event) {
-            const { acceleration } = event;
-            if (acceleration) {
-                if (Math.abs(acceleration.x) > sensitivity || Math.abs(acceleration.y) > sensitivity || Math.abs(acceleration.z) > sensitivity) {
-                    clearInterval(timer);
-                    window.removeEventListener('devicemotion', handleMotion);
-                    const elapsedTime = Math.round((Date.now() - startTime) / 1000);
-                    scoreTextElement.innerHTML = `${username}, your score is ${elapsedTime} seconds.`;
-                }
-            }
+    function handleInterestResponse(isInterested) {
+        interestElement.style.display = 'none';
+        if (isInterested) {
+            mainPageElement.classList.remove("hidden");
+            mainPageElement.classList.add("fade-in");
+            mainPageElement.innerHTML = `<h1>Welcome to our shopping site!</h1><p>Here are our products:</p>`;
+        } else {
+            typingElement.classList.remove("hidden");
+            typeWriter(typingElement, noInterestText, null);
         }
-
-        timer = setInterval(() => {
-            timerElement.innerText = Math.round((Date.now() - startTime) / 1000);
-            sensitivity += 1; // Increase sensitivity over time
-        }, 1000); // Update every second
     }
 
     function startQuestion() {
@@ -91,6 +69,26 @@ document.addEventListener("DOMContentLoaded", function() {
             typeWriter(typingElement, initialText, showButtons);
         }
     });
+
+    function showButtons() {
+        const buttons = document.getElementById("buttons");
+        buttons.classList.remove("hidden");
+        buttons.style.display = "flex";
+        setTimeout(() => {
+            buttons.style.transition = "opacity 1s ease-in-out";
+            buttons.style.opacity = 1;
+        }, 10);
+
+        englishButton.addEventListener("click", () => handleLanguageSelection('english'));
+        chineseButton.addEventListener("click", () => handleLanguageSelection('chinese'));
+    }
+
+    function handleLanguageSelection(language) {
+        selectedLanguage = language;
+        const buttons = document.getElementById("buttons");
+        buttons.style.display = "none";
+        showInterestQuestion();
+    }
 
     startQuestion();
 });

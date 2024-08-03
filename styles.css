@@ -51,7 +51,7 @@ button:active {
     transform: scale(1.05);
 }
 
-#typing, #scoreText, #questionText {
+#typing, #scoreText, #questionText, #interestText {
     max-width: 100%;
     overflow-wrap: break-word;
 }
@@ -64,6 +64,12 @@ button:active {
 
 #score {
     text-align: center;
+}
+
+#interestButtons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 /* Fade-in animation */
