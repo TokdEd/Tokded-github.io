@@ -86,3 +86,92 @@ button:active {
         opacity: 1;
     }
 }
+.fade-out {
+    opacity: 1;
+    animation: fadeOut 1s ease-in forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-image: url('/logo.jpg'); /* 替换为你的图片路径 */
+    background-size: contain; /* 确保图片按比例缩放 */
+    background-repeat: no-repeat; /* 避免图片重复 */
+    background-position: center; /* 确保图片居中 */
+    height: 100px; /* 你可以调整这个高度以适应你的设计 */
+}
+
+
+
+.menu, .logo, .search-box {
+    margin: 0 10px;
+}
+.logo{
+    height: 40px;
+    width: auto;
+}
+.menu {
+    font-size: 2rem; /* Increase the size of the menu icon */
+    cursor: pointer;
+    color: #00FF00;
+    border-radius: 15%;
+}
+
+.search-box input {
+    padding: 5px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #131212;
+    color: #00FF00;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Change to column to align items vertically */
+    padding: 20px;
+    height: calc(100vh - 50px); /* Adjust to fit within the viewport */
+}
+
+.product-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Ensure it takes full width */
+}
+
+.product {
+    width: 300px; /* Set width to create a square */
+    height: 300px; /* Set height to create a square */
+    font-size: 4rem; /* Increase the size of the product text */
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #00FF00;
+    background-color: #202020;
+    border-radius: 15%; /* Round the corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.product-intro {
+    font-size: 1.5rem; /* Decrease the size of the product intro text */
+    color: #FFF;
+    margin: 10px;
+    padding: 10px;
+    text-align:left;
+}
