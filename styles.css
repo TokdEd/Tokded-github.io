@@ -104,7 +104,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-image: url('/logo.jpg'); /* 替换为你的图片路径 */
+    background-image: url('logo.jpg'); /* 替换为你的图片路径 */
     background-size: contain; /* 确保图片按比例缩放 */
     background-repeat: no-repeat; /* 避免图片重复 */
     background-position: center; /* 确保图片居中 */
