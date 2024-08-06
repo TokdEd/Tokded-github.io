@@ -126,14 +126,33 @@ header {
     color: #00FF00;
     border-radius: 15%;
 }
-
+.search-box {
+    position: relative;
+    margin-right: 0; /* 使搜索图标更靠近右边 */
+}
 .search-box input {
     padding: 5px;
     font-size: 1rem;
     border: none;
     border-radius: 5px;
-    background-color: #131212;
+    background-color: #000;
     color: #00FF00;
+    width: 0;
+    transition: width 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+}
+
+.search-box input:focus,
+.search-box:hover input {
+    width: 200px;
+    opacity: 1;
+}
+
+.search-icon {
+    font-size: 1.5rem;
+    color: #00FF00;
+    cursor: pointer;
+    
 }
 
 main {

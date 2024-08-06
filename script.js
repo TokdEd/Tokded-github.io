@@ -188,3 +188,22 @@ document.addEventListener('DOMContentLoaded', () => {
         camera.updateProjectionMatrix();
     });
 });
+document.addEventListener("DOMContentLoaded", function() {
+    const searchIcon = document.querySelector('.search-icon');
+    const searchBox = document.querySelector('.search-box input');
+
+    searchIcon.addEventListener('click', function() {
+        searchBox.focus();
+    });
+
+    searchIcon.addEventListener('mouseover', function() {
+        searchBox.style.width = '200px';
+        searchBox.style.opacity = '1';
+    });
+
+    searchBox.addEventListener('blur', function() {
+        searchBox.style.width = '0';
+        searchBox.style.opacity = '0';
+    });
+});
+
