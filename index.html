@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Website</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="module">
+        import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js';
+        import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/loaders/GLTFLoader.js';
+        import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/controls/OrbitControls.js';
+        
+        window.THREE = THREE;
+        window.GLTFLoader = GLTFLoader;
+        window.OrbitControls = OrbitControls;
+    </script>
 </head>
 <body>
     <div class="container">
@@ -31,6 +40,4 @@
     </div>
     <script src="script.js"></script>
 </body>
-</html>
-
 </html>

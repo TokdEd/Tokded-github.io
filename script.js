@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
     const initialText = "English or Chinese?";
     const interestTextEnglish = "Are you interested in our products?";
@@ -45,16 +46,32 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function handleInterestResponse(isInterested) {
-        interestElement.style.display = 'none';
+        interestElement.classList.add("hidden");
         if (isInterested) {
-            mainPageElement.classList.remove("hidden");
-            mainPageElement.classList.add("fade-in");
-            mainPageElement.innerHTML = `<h1>Welcome to our shopping site!</h1><p>Here are our products:</p>`;
+            // 设置淡入效果
+            document.body.classList.add("fade-out");
+            setTimeout(() => {
+                window.location.href = "main.html";
+            }, 1000); // 设置延迟以配合淡出效果的时长
         } else {
             typingElement.classList.remove("hidden");
             typeWriter(typingElement, noInterestText, null);
         }
     }
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        const yesButton = document.getElementById("yesButton");
+        const noButton = document.getElementById("noButton");
+    
+        yesButton.addEventListener("click", function() {
+            handleInterestResponse(true);
+        });
+    
+        noButton.addEventListener("click", function() {
+            handleInterestResponse(false);
+        });
+    });
+    
 
     function startQuestion() {
         document.getElementById("question").classList.remove("hidden");
@@ -93,3 +110,81 @@ document.addEventListener("DOMContentLoaded", function() {
     startQuestion();
 });
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize 3D scene
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+    camera.position.set(0, 1, 5);
+
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(300, 300);
+    document.getElementById('product').appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+
+    const ambientLight = new THREE.AmbientLight(0x404040, 1);
+    scene.add(ambientLight);
+
+    const pointLights = [
+        new THREE.PointLight(0xffffff, 3),
+        new THREE.PointLight(0xffffff, 3),
+        new THREE.PointLight(0xffffff, 3),
+        new THREE.PointLight(0xffffff, 3),
+        new THREE.PointLight(0xffffff, 3),
+        new THREE.PointLight(0xffffff, 3)
+    ];
+
+    pointLights[0].position.set(10, 0, 0);
+    pointLights[1].position.set(-10, 0, 0);
+    pointLights[2].position.set(0, 10, 0);
+    pointLights[3].position.set(0, -10, 0);
+    pointLights[4].position.set(0, 0, 10);
+    pointLights[5].position.set(0, 0, -10);
+
+    pointLights.forEach(light => scene.add(light));
+
+    const textureLoader = new THREE.TextureLoader();
+    const textureJpg = textureLoader.load('/models/texture.jpg');
+    const texturePng = textureLoader.load('/models/texture.png');
+
+    textureJpg.repeat.set(1, 1);
+    texturePng.repeat.set(1, 1);
+
+    const loader = new GLTFLoader();
+    loader.load('/models/model.gltf', (gltf) => {
+        const model = gltf.scene;
+        let index = 0;
+        model.traverse((child) => {
+            if (child.isMesh) {
+                if (index % 2 === 0) {
+                    child.material = new THREE.MeshStandardMaterial({ map: textureJpg });
+                    child.material.map.repeat.set(1, 1);
+                } else {
+                    child.material = new THREE.MeshStandardMaterial({ map: texturePng });
+                    child.material.map.repeat.set(1, 1);
+                }
+                index++;
+            }
+        });
+        model.scale.set(1, 1, 1);
+        model.position.set(0, 0, 0);
+        scene.add(model);
+    }, undefined, (error) => {
+        console.error(error);
+    });
+
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+        renderer.setSize(300, 300);
+        camera.aspect = 300 / 300;
+        camera.updateProjectionMatrix();
+    });
+});
