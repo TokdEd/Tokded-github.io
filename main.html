@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Site</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Import Three.js and related modules -->
-    <script type="module">
-        import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js';
-        import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/loaders/GLTFLoader.js';
-        import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/controls/OrbitControls.js';
-        
-        window.THREE = THREE;
-        window.GLTFLoader = GLTFLoader;
-        window.OrbitControls = OrbitControls;
-    </script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    <style>
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -27,7 +25,15 @@
     </header>
     <main>
         <div class="product-field">
-            <div id="product" class="product"></div>
+            <div id="product" class="product">
+                <model-viewer 
+                    alt="Air Force 1 Low BLZCK"
+                    src="/models/model.gltf" 
+                    shadow-intensity="1" 
+                    camera-controls 
+                    touch-action="pan-y">
+                </model-viewer>
+            </div>
             <div class="product-intro">Air Force 1 Low BLZCK</div>
         </div>
     </main>
