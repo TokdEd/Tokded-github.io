@@ -195,3 +195,22 @@ main {
     padding: 10px;
     text-align:left;
 }
+.product2 {
+    width: 300px; /* Set width to create a square */
+    height: 300px; /* Set height to create a square */
+    font-size: 4rem; /* Increase the size of the product text */
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #00FF00;
+    background-color: #202020;
+    border-radius: 15%; /* Round the corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+a{
+    color: #FFF;
+}
