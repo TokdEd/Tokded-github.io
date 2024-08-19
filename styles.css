@@ -160,9 +160,10 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Change to column to align items vertically */
+    flex-direction: column;
     padding: 20px;
-    height: calc(100vh - 50px); /* Adjust to fit within the viewport */
+    min-height: 100vh; /* 改为最小高度，允许页面内容超过一屏时滚动 */
+    box-sizing: border-box;
 }
 
 .product-field {
