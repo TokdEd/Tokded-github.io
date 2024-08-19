@@ -107,6 +107,7 @@ header {
     background-size: contain; /* 确保图片按比例缩放 */
     background-repeat: no-repeat; /* 避免图片重复 */
     background-position: center; /* 确保图片居中 */
+    z-index: 1000;
     height: 100px; /* 你可以调整这个高度以适应你的设计 */
 }
 
@@ -171,6 +172,7 @@ main {
     align-items: center;
     justify-content: center;
     width: 100%; /* Ensure it takes full width */
+    z-index: 1;
 }
 
 .product {
