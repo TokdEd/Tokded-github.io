@@ -118,6 +118,7 @@ header {
 .logo{
     height: 40px;
     width: auto;
+    position: fixed;
 }
 .menu {
     font-size: 2rem; /* Increase the size of the menu icon */
